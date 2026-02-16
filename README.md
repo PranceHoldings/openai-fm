@@ -4,80 +4,87 @@
 ![NextJS](https://img.shields.io/badge/Built_with-NextJS-blue)
 ![OpenAI API](https://img.shields.io/badge/Powered_by-OpenAI_API-orange)
 
-[OpenAI.fm](https://openai.fm) をベースにした TTS デモアプリ（PoC）。
-Voice / Vibe / Script を試して、気に入った設定をワンクリックでコピーして共有できます。
+**English:** A TTS demo app (PoC) based on [OpenAI.fm](https://openai.fm). Try Voice / Vibe / Script and copy your preferred settings with one click. Access is protected by Basic auth.
 
-Basic 認証によるアクセス制限付き。
+**日本語:** [OpenAI.fm](https://openai.fm) をベースにした TTS デモアプリ（PoC）。Voice / Vibe / Script を試して、気に入った設定をワンクリックでコピーして共有できます。Basic 認証によるアクセス制限付き。
 
-![screenshot](./public/screenshot.jpg)
+---
 
-## セットアップ
+## Setup | セットアップ
 
-### 前提条件
+### Prerequisites | 前提条件
 
-- [Bun](https://bun.sh/) がインストールされていること
-- [OpenAI API キー](https://platform.openai.com/api-keys) を取得済みであること
+- [Bun](https://bun.sh/) installed | [Bun](https://bun.sh/) がインストールされていること
+- [OpenAI API key](https://platform.openai.com/api-keys) | [OpenAI API キー](https://platform.openai.com/api-keys) を取得済みであること
 
-### 1. リポジトリのクローン
+### 1. Clone the repository | リポジトリのクローン
 
 ```bash
 git clone <your-repo-url>
 cd openai-fm
 ```
 
-### 2. 環境変数の設定
+### 2. Environment variables | 環境変数の設定
 
+Create a `.env` file from `.env.example`.  
 `.env.example` を参考に `.env` ファイルを作成します。
 
 ```bash
 cp .env.example .env
 ```
 
-`.env` を編集:
+Edit `.env`:
 
 ```bash
-# 必須: OpenAI API キー
+# Required | 必須: OpenAI API key
 OPENAI_API_KEY=sk-...
 
-# 任意: Basic 認証（両方設定すると有効化）
+# Optional | 任意: Basic auth (enabled when both are set)
 BASIC_AUTH_USER=admin
 BASIC_AUTH_PASSWORD=your-password-here
 ```
 
-### 3. 依存パッケージのインストール
+### 3. Install dependencies | 依存パッケージのインストール
 
 ```bash
 bun install
 ```
 
-### 4. 開発サーバーの起動
+### 4. Start the dev server | 開発サーバーの起動
 
 ```bash
 bun run dev
 ```
 
+The app runs at [`http://localhost:3000`](http://localhost:3000).  
 [`http://localhost:3000`](http://localhost:3000) でアプリが起動します。
 
-## Vercel へのデプロイ
+---
 
-1. GitHub にリポジトリを push
-2. [Vercel](https://vercel.com/new) でプロジェクトをインポート
-3. Environment Variables に以下を設定:
+## Deploy to Vercel | Vercel へのデプロイ
+
+1. Push the repository to GitHub | GitHub にリポジトリを push
+2. Import the project on [Vercel](https://vercel.com/new) | [Vercel](https://vercel.com/new) でプロジェクトをインポート
+3. Set Environment Variables | Environment Variables に以下を設定:
    - `OPENAI_API_KEY`
    - `BASIC_AUTH_USER`
    - `BASIC_AUTH_PASSWORD`
-4. デプロイ実行
+4. Deploy | デプロイ実行
 
 > [!NOTE]
-> デプロイ先で発生する OpenAI API の利用料金は、設定した API キーの所有者に請求されます。
-> Basic 認証を必ず有効にして、意図しないアクセスを防いでください。
+> **EN:** OpenAI API usage on the deployed app is billed to the owner of the API key. Enable Basic auth to prevent unintended access.  
+> **JA:** デプロイ先で発生する OpenAI API の利用料金は、設定した API キーの所有者に請求されます。Basic 認証を必ず有効にして、意図しないアクセスを防いでください。
 
-## オリジナルからの変更点
+---
 
-- シェア機能（Postgres 連携）を削除
-- 「Copy Settings」ボタンを追加（Voice / Vibe / Script をクリップボードにコピー）
-- Basic 認証ミドルウェアを追加
-- パッケージマネージャーを bun に統一
+## Changes from the original | オリジナルからの変更点
+
+- Share feature (Postgres) removed | シェア機能（Postgres 連携）を削除
+- “Copy Settings” button added (Voice / Language / Vibe to clipboard) | 「Copy Settings」ボタンを追加（Voice / Language / Vibe をクリップボードにコピー）
+- Basic auth middleware added | Basic 認証ミドルウェアを追加
+- Package manager unified to bun | パッケージマネージャーを bun に統一
+
+---
 
 ## License
 
