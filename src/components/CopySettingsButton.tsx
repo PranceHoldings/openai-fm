@@ -10,7 +10,7 @@ export const CopySettingsButton = () => {
   const handleCopy = () => {
     if (copied) return;
 
-    const { voice, language, prompt, input } = appStore.getState();
+    const { voice, language, prompt } = appStore.getState();
 
     const langLabel = language === "ja" ? "Japanese" : "English";
 
